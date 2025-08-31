@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Règles du Jeu KARU - Guide Complet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background: linear-gradient(135deg, #1A1A2E 0%, #252A34 100%);
+            color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        .title-gradient {
+            background: linear-gradient(135deg, #00A6FB 0%, #FF2E63 50%, #FFC144 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 166, 251, 0.3);
+        }
+
+        /* Header */
+        .header {
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 2px solid rgba(0, 166, 251, 0.2);
+            margin-bottom: 3rem;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Game Overview */
+        .game-overview {
+            background: rgba(37, 42, 52, 0.8);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 2px solid rgba(0, 166, 251, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-overview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 166, 251, 0.05), rgba(255, 46, 99, 0.05));
+        }
+
+        .game-overview-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .game-overview h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .overview-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .overview-card {
+            background: rgba(37, 42, 52, 0.6);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid rgba(0, 166, 251, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-5px);
+            border-color: #00A6FB;
+            box-shadow: 0 10px 20px rgba(0, 166, 251, 0.2);
+        }
+
+        .overview-card h3 {
+            color: #00A6FB;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card-icon {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #00A6FB, #FF2E63);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        /* Rules Sections */
+        .rules-section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #00A6FB, #FF2E63);
+            border-radius: 2px;
+        }
+
+        .rule-card {
+            background: rgba(37, 42, 52, 0.8);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid rgba(0, 166, 251, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 166, 251, 0.05), rgba(255, 46, 99, 0.05));
+        }
+
+        .rule-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .rule-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #00A6FB;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .rule-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FF2E63, #FFC144);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .rule-steps {
+            list-style: none;
+        }
+
+        .rule-steps li {
+            padding: 0.75rem 0;
+            padding-left: 2rem;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .rule-steps li:last-child {
+            border-bottom: none;
+        }
+
+        .rule-steps li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            top: 0.75rem;
+            color: #00A6FB;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Game Modes */
+        .game-modes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .mode-category {
+            background: rgba(37, 42, 52, 0.8);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 2px solid rgba(0, 166, 251, 0.2);
+        }
+
+        .mode-category h4 {
+            color: #FF2E63;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .mode-list {
+            list-style: none;
+        }
+
+        .mode-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .mode-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FFC144;
+            font-weight: bold;
+        }
+
+        /* Card Explanation */
+        .card-explanation {
+            background: rgba(37, 42, 52, 0.8);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 2px solid rgba(255, 46, 99, 0.3);
+            text-align: center;
+        }
+
+        .card-explanation h3 {
+            color: #FF2E63;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .card-demo {
+            width: 120px;
+            height: 160px;
+            background: linear-gradient(135deg, #252A34, #8E54E9);
+            border-radius: 10px;
+            border: 2px solid rgba(0, 166, 251, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .card-demo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 166, 251, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 3rem 0;
+            border-top: 1px solid rgba(0, 166, 251, 0.2);
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        .app-download {
+            margin-top: 2rem;
+        }
+
+        .download-text {
+            color: #00A6FB;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .game-overview,
+            .rule-card,
+            .card-explanation {
+                padding: 1.5rem;
+            }
+
+            .overview-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .game-modes {
+                grid-template-columns: 1fr;
+            }
+
+            .card-visual {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .bonus-malus-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1.5rem !important;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, #1A1A2E 0%, #252A34 100%) !important;
+                color: #ffffff !important;
+                font-size: 12pt;
+                line-height: 1.4;
+            }
+
+            .container {
+                max-width: 100%;
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 24pt !important;
+                background: linear-gradient(135deg, #00A6FB 0%, #FF2E63 50%, #FFC144 100%) !important;
+                -webkit-background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
+                background-clip: text !important;
+                page-break-after: avoid;
+            }
+
+            .section-title {
+                font-size: 18pt !important;
+                page-break-after: avoid;
+                margin-top: 20pt;
+            }
+
+            .rule-card,
+            .game-overview,
+            .card-explanation,
+            .mode-category {
+                border: 2px solid #00A6FB !important;
+                background: rgba(37, 42, 52, 0.8) !important;
+                page-break-inside: avoid;
+                margin-bottom: 15pt;
+                border-radius: 15px !important;
+            }
+
+            .rule-card::before,
+            .game-overview::before {
+                background: linear-gradient(135deg, rgba(0, 166, 251, 0.1), rgba(255, 46, 99, 0.1)) !important;
+            }
+
+            .title-gradient {
+                background: linear-gradient(135deg, #00A6FB 0%, #FF2E63 50%, #FFC144 100%) !important;
+                -webkit-background-clip: text !important;
+                -webkit-text-fill-color: transparent !important;
+                background-clip: text !important;
+            }
+
+            .rule-number {
+                background: linear-gradient(135deg, #FF2E63, #FFC144) !important;
+                color: #ffffff !important;
+            }
+
+            .card-icon {
+                background: linear-gradient(135deg, #00A6FB, #FF2E63) !important;
+            }
+
+            .rule-steps li::before {
+                color: #00A6FB !important;
+            }
+
+            .mode-list li::before {
+                color: #FFC144 !important;
+            }
+
+            .card-demo {
+                background: linear-gradient(135deg, #252A34, #8E54E9) !important;
+                border: 2px solid rgba(0, 166, 251, 0.3) !important;
+                color: #ffffff !important;
+            }
+
+            .bonus-malus-grid {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
+                gap: 15pt !important;
+                page-break-inside: avoid;
+            }
+
+            .malus-section > div {
+                background: rgba(255, 46, 99, 0.1) !important;
+                border: 2px solid #FF2E63 !important;
+            }
+
+            .bonus-section > div {
+                background: rgba(255, 193, 68, 0.1) !important;
+                border: 2px solid #FFC144 !important;
+            }
+
+            /* Force print colors for specific elements */
+            h1, h2, h3, h4 {
+                color: #ffffff !important;
+            }
+
+            .overview-card h3 {
+                color: #00A6FB !important;
+            }
+
+            .mode-category h4 {
+                color: #FF2E63 !important;
+            }
+
+            .card-explanation h3 {
+                color: #FF2E63 !important;
+            }
+
+            /* Hide elements that don't work well in print */
+            .floating-elements {
+                display: none !important;
+            }
+
+            /* Ensure page breaks */
+            .rules-section {
+                page-break-before: auto;
+            }
+
+            .footer {
+                page-break-before: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title-gradient">RÈGLES DU JEU KARU</h1>
+            <p>Le jeu de cartes musical anime qui allie réflexes, mémoire et passion pour les génériques !</p>
+        </header>
+
+        <!-- Game Overview -->
+        <section class="game-overview">
+            <div class="game-overview-content">
+                <h2 class="title-gradient">Présentation du Jeu</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; text-align: center;">
+                    KARU est un jeu de cartes révolutionnaire qui combine des cartes physiques avec une application mobile. 
+                    Testez vos connaissances sur les génériques d'anime dans une expérience de jeu rapide et addictive !
+                </p>
+                
+                <div class="overview-cards">
+                    <div class="overview-card">
+                        <h3><span class="card-icon">👥</span>Joueurs</h3>
+                        <p>2 joueurs ou plus<br>Idéal pour toute la famille et entre amis</p>
+                    </div>
+                    <div class="overview-card">
+                        <h3><span class="card-icon">⏱️</span>Durée</h3>
+                        <p>3 à 45 minutes<br>Selon le mode de jeu choisi</p>
+                    </div>
+                    <div class="overview-card">
+                        <h3><span class="card-icon">🎯</span>Âge</h3>
+                        <p>À partir de 10 ans<br>Accessible à tous les niveaux</p>
+                    </div>
+                    <div class="overview-card">
+                        <h3><span class="card-icon">📱</span>Matériel</h3>
+                        <p>Cartes KARU + App mobile<br>Experience hybride innovante</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Setup Rules -->
+        <section class="rules-section">
+            <h2 class="section-title title-gradient">Préparation de la Partie</h2>
+            
+            <div class="rule-card">
+                <div class="rule-content">
+                    <h3><span class="rule-number">1</span>Préparation des Cartes</h3>
+                    <ul class="rule-steps">
+                        <li>Chaque joueur prend la moitié des cartes correspondant au mode de jeu choisi</li>
+                        <li>Les cartes doivent avoir le même logo de catégorie au dos (visible sur l'application)</li>
+                        <li>Placez toutes les cartes face visible sur une surface plane en format grille</li>
+                        <li>Assurez-vous que toutes les cartes sont facilement accessibles à tous les joueurs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-content">
+                    <h3><span class="rule-number">2</span>Configuration de l'Application</h3>
+                    <ul class="rule-steps">
+                        <li>Téléchargez l'application KARU MELO sur votre smartphone ou tablette</li>
+                        <li>Choisissez le mode de jeu souhaité (thème, niveau, durée)</li>
+                        <li>Placez l'appareil au centre de la zone de jeu, audible par tous</li>
+                        <li>Assurez-vous que le volume est suffisant pour entendre clairement les extraits</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gameplay Rules -->
+        <section class="rules-section">
+            <h2 class="section-title title-gradient">Comment Jouer</h2>
+            
+            <div class="rule-card">
+                <div class="rule-content">
+                    <h3><span class="rule-number">3</span>Déroulement d'un Tour</h3>
+                    <ul class="rule-steps">
+                        <li><strong>Début du tour :</strong> L'application sélectionne aléatoirement une carte et joue un court extrait audio (3 à 5 secondes) du générique d'anime correspondant</li>
+                        <li><strong>Phase de recherche :</strong> Tous les joueurs écoutent attentivement l'extrait musical</li>
+                        <li><strong>Phase d'action :</strong> Les joueurs se précipitent pour identifier et saisir la carte correspondante</li>
+                        <li><strong>Validation :</strong> Le premier joueur à toucher ou ramasser la bonne carte la remporte</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-content">
+                    <h3><span class="rule-number">4</span>Règles de Réclamation</h3>
+                    <ul class="rule-steps">
+                        <li><strong>Carte correcte :</strong> Le joueur garde la carte et marque 1 point</li>
+                        <li><strong>Carte incorrecte :</strong> Le joueur donne une de ses cartes gagnées à un autre joueur</li>
+                        <li><strong>Égalité :</strong> Si plusieurs joueurs touchent la carte simultanément, rejouez le tour</li>
+                        <li><strong>Aucune action :</strong> Si personne ne trouve la carte, révélez la réponse et continuez</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-content">
+                    <h3><span class="rule-number">5</span>Fin de Partie et Victoire</h3>
+                    <ul class="rule-steps">
+                        <li><strong>Condition de fin :</strong> La partie se termine quand toutes les cartes ont été utilisées</li>
+                        <li><strong>Décompte des points :</strong> Chaque carte correctement réclamée rapporte 1 point</li>
+                        <li><strong>Victoire :</strong> Le joueur avec le plus de cartes/points gagne la partie</li>
+                        <li><strong>Égalité :</strong> En cas d'égalité, organisez une manche de départage avec 5 cartes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bonus and Malus Cards -->
+        <section class="rules-section">
+            <h2 class="section-title title-gradient">Cartes Bonus et Malus</h2>
+            
+            <div class="rule-card">
+                <div class="rule-content">
+                    <h3><span class="rule-number">6</span>Système de Défis Spéciaux</h3>
+                    <p style="margin-bottom: 1.5rem; color: rgba(255, 255, 255, 0.9);">
+                        Pour pimenter vos parties, KARU inclut des cartes bonus et malus qui ajoutent des défis amusants et des avantages stratégiques !
+                    </p>
+                </div>
+            </div>
+
+            <div class="bonus-malus-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                <div class="malus-section">
+                    <div style="background: rgba(255, 46, 99, 0.1); border: 2px solid #FF2E63; border-radius: 15px; padding: 2rem;">
+                        <h4 style="color: #FF2E63; font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            ⚡ Cartes Malus
+                        </h4>
+                        <ul style="list-style: none; color: rgba(255, 255, 255, 0.9);">
+                            <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #FF2E63; font-weight: bold;">▲</span>
+                                <strong>Main gauche uniquement :</strong> Ne peut utiliser que sa main gauche
+                            </li>
+                            <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #FF2E63; font-weight: bold;">▲</span>
+                                <strong>Yeux fermés :</strong> Doit jouer les yeux fermés
+                            </li>
+                            <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #FF2E63; font-weight: bold;">▲</span>
+                                <strong>Délai de 5 secondes :</strong> Ne peut pas prendre de carte pendant les 5 premières secondes
+                            </li>
+                            <li style="padding: 0.5rem 0; color: rgba(255, 255, 255, 0.6); font-style: italic; text-align: center;">
+                                ... et bien d'autres défis !
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bonus-section">
+                    <div style="background: rgba(255, 193, 68, 0.1); border: 2px solid #FFC144; border-radius: 15px; padding: 2rem;">
+                        <h4 style="color: #FFC144; font-size: 1.8rem; margin-bottom: 1.5rem; text-align: center; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                            ✨ Cartes Bonus
+                        </h4>
+                        <ul style="list-style: none; color: rgba(255, 255, 255, 0.9);">
+                            <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #FFC144; font-weight: bold;">★</span>
+                                <strong>Rapprocher une carte :</strong> Peut rapprocher une carte de lui pendant le son
+                            </li>
+                            <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #FFC144; font-weight: bold;">★</span>
+                                <strong>Carte double :</strong> Une carte compte pour 2 points
+                            </li>
+                            <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative;">
+                                <span style="position: absolute; left: 0; color: #FFC144; font-weight: bold;">★</span>
+                                <strong>Vol de carte :</strong> Peut voler une carte gagnée par un adversaire (1x par partie)
+                            </li>
+                            <li style="padding: 0.5rem 0; color: rgba(255, 255, 255, 0.6); font-style: italic; text-align: center;">
+                                ... et bien d'autres avantages !
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-content">
+                    <h3><span class="rule-number">7</span>Modes de Jeu : Normal vs Pro</h3>
+                    <ul class="rule-steps">
+                        <li><strong>Mode Normal :</strong> Parties classiques sans cartes bonus/malus - idéal pour débuter et maîtriser les bases</li>
+                        <li><strong>Mode Pro :</strong> Débloqué après 10 parties jouées - inclut les cartes bonus et malus pour plus de challenge</li>
+                        <li><strong>Accès au Mode Pro :</strong> L'application suit automatiquement vos parties et débloque le mode avancé</li>
+                        <li><strong>Système de défis évolutif :</strong> Plus vous jouez, plus les parties deviennent stratégiques et imprévisibles !</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-content">
+                    <h3><span class="rule-number">8</span>Application des Cartes Spéciales (Mode Pro)</h3>
+                    <ul class="rule-steps">
+                        <li><strong>Distribution :</strong> En mode Pro, mélangez les cartes bonus/malus et distribuez-en une par joueur en début de partie</li>
+                        <li><strong>Révélation :</strong> Chaque joueur révèle sa carte et applique immédiatement son effet</li>
+                        <li><strong>Système anti-domination :</strong> Si un joueur gagne plus de 2 parties consécutives, il reçoit automatiquement une carte malus à la partie suivante</li>
+                        <li><strong>Équilibrage automatique :</strong> Ce système assure que les parties restent compétitives et amusantes pour tous</li>
+                        <li><strong>Durée :</strong> Les effets s'appliquent pour toute la durée de la partie sauf indication contraire</li>
+                        <li><strong>Variante optionnelle :</strong> Les cartes bonus/malus peuvent être utilisées dès le mode normal pour plus de fun !</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Card Explanation -->
+        <section class="card-explanation">
+            <h3>🎴 Comprendre les Cartes KARU</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">
+                Chaque carte KARU a le logo de sa catégorie au dos. Avant de commencer, assurez-vous de réunir 
+                toutes les cartes avec le même logo pour votre mode de jeu !
+            </p>
+            <div class="card-visual">
+                <div class="card-demo" style="background: linear-gradient(135deg, #FF2E63, #FFC144);">
+                    SHONEN
+                </div>
+                <div class="card-demo" style="background: linear-gradient(135deg, #FF69B4, #FFB6C1);">
+                    ROMANCE
+                </div>
+                <div class="card-demo" style="background: linear-gradient(135deg, #8E54E9, #4776E6);">
+                    DRAMA
+                </div>
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.8);">
+                <strong>Astuce :</strong> Cherchez et prenez toutes les cartes avec le logo correspondant à votre mode de jeu !
+            </p>
+        </section>
+
+        <!-- Game Modes -->
+        <section class="rules-section">
+            <h2 class="section-title title-gradient">Modes de Jeu Disponibles</h2>
+            
+            <div class="game-modes">
+                <div class="mode-category">
+                    <h4>🎭 Thèmes</h4>
+                    <ul class="mode-list">
+                        <li><strong>Shonen :</strong> Anime d'action et d'aventure</li>
+                        <li><strong>Romance :</strong> Anime romantiques et shojo</li>
+                        <li><strong>Drama :</strong> Anime dramatiques et émouvants</li>
+                        <li><strong>Seinen :</strong> Anime pour un public mature</li>
+                        <li><strong>Sports :</strong> Anime de sport et compétition</li>
+                        <li><strong>Années 90 :</strong> Classiques des années 90</li>
+                    </ul>
+                </div>
+
+                <div class="mode-category">
+                    <h4>🎯 Niveaux de Difficulté</h4>
+                    <ul class="mode-list">
+                        <li><strong>Noob du dimanche :</strong> Anime très populaires</li>
+                        <li><strong>Mainstream watcher :</strong> Anime connus</li>
+                        <li><strong>Otaku Ultime :</strong> Anime pointus et rares</li>
+                    </ul>
+                </div>
+
+                <div class="mode-category">
+                    <h4>⏰ Durées de Partie</h4>
+                    <ul class="mode-list">
+                        <li><strong>15 minutes :</strong> Partie rapide</li>
+                        <li><strong>20 minutes :</strong> Partie standard</li>
+                        <li><strong>30 minutes :</strong> Partie longue</li>
+                    </ul>
+                </div>
+
+                <div class="mode-category">
+                    <h4>⚙️ Modes Spéciaux</h4>
+                    <ul class="mode-list">
+                        <li><strong>Mode Personnalisé :</strong> Créez votre partie</li>
+                        <li><strong>Mode Tutoriel :</strong> Apprenez avec des exemples</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🎌 Amusez-vous et découvrez de nouveaux génériques d'anime ! 🎌</p>
+            <div class="app-download">
+                <p class="download-text">📱 Téléchargez l'application KARU MELO pour commencer à jouer !</p>
+                <p style="color: rgba(255, 255, 255, 0.7); margin-top: 1rem;">
+                    Disponible sur iOS et Android<br>
+                    Visitez <strong>karu.com</strong> pour plus d'informations
+                </p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html> 

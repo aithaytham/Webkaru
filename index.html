@@ -1,0 +1,625 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Karu Anime - Précommande | KARU MELO</title>
+    <meta
+      name="description"
+      content="Précommandez votre deck Karu officiel - Le jeu de cartes anime ultime basé sur l'application KARU MELO"
+    />
+    <meta
+      name="keywords"
+      content="karu, anime, cartes, jeu, précommande, otaku, manga"
+    />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yoursite.com/" />
+    <meta property="og:title" content="Karu Deck - Précommande | KARU MELO" />
+    <meta
+      property="og:description"
+      content="Précommandez votre deck Karu officiel - Le jeu de cartes anime ultime"
+    />
+    <meta property="og:image" content="assets/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://yoursite.com/" />
+    <meta
+      property="twitter:title"
+      content="Karu Deck - Précommande | KARU MELO"
+    />
+    <meta
+      property="twitter:description"
+      content="Précommandez votre deck Karu officiel - Le jeu de cartes anime ultime"
+    />
+    <meta property="twitter:image" content="assets/og-image.jpg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Stripe Configuration will be loaded at the end of body -->
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header">
+      <nav class="nav">
+        <div class="nav-container">
+          <div class="nav-logo">
+            <img src="assets/logo.png" alt="Karu Logo" class="logo-img" />
+            <span class="logo-text">KARU MELO</span>
+            <span class="logo-japanese">カルメロ</span>
+          </div>
+          <div class="nav-links">
+            <a href="#features" class="nav-link">Caractéristiques</a>
+            <a href="#preorder" class="nav-link">Précommander</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <h1 class="hero-title">
+            <span class="title-main">KARU ANIME</span>
+            <span class="title-sub"
+              >Le jeu de cartes ultime de blind test anime
+            </span>
+          </h1>
+          <p class="hero-description">
+            Découvrez l'expérience physique de KARU MELO avec notre deck de
+            cartes officiel. Plus de 100 cartes soigneusement sélectionnées
+            représentant les meilleurs anime et leurs génériques iconiques.
+          </p>
+          <div class="hero-buttons">
+            <a href="#preorder" class="btn btn-primary">
+              <span>Précommander maintenant</span>
+              <div class="btn-glow"></div>
+            </a>
+            <button class="btn btn-secondary" onclick="openNewsletter()">
+              <span>🔔 M'avertir de la sortie</span>
+            </button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="cards-stack">
+            <div
+              class="card card-1"
+              style="background-image: url(&quot;assets/Card1.png&quot;)"
+            ></div>
+            <div
+              class="card card-2"
+              style="background-image: url(&quot;assets/Card2.png&quot;)"
+            ></div>
+            <div
+              class="card card-3"
+              style="background-image: url(&quot;assets/Card3.png&quot;)"
+            ></div>
+          </div>
+          <div class="floating-elements">
+            <div class="float-element float-1"></div>
+            <div class="float-element float-2"></div>
+            <div class="float-element float-3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <div class="container">
+        <h2 class="section-title">
+          <span class="title-gradient">Pourquoi choisir Karu Deck ?</span>
+        </h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 63 63" fill="none">
+                <circle cx="31.5" cy="31.5" r="26" fill="#FFC144" />
+                <circle cx="31.5" cy="31.5" r="20" fill="#00A6FB" />
+                <path d="M24 18L24 45L48 31.5L24 18Z" fill="#FF2E63" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Qualité Premium</h3>
+            <p class="feature-description">
+              Cartes imprimées sur papier haute qualité avec finition mate et
+              coins arrondis pour une expérience de jeu optimale.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 63 63" fill="none">
+                <path
+                  d="M12 8H51C53.2091 8 55 9.79086 55 12V51C55 53.2091 53.2091 55 51 55H12C9.79086 55 8 53.2091 8 51V12C8 9.79086 9.79086 8 12 8Z"
+                  fill="#FFC144"
+                />
+                <path d="M15 15H48V48H15V15Z" fill="#F5F5F5" />
+                <path d="M40 8V25L43.5 22L47 25V8H40Z" fill="#FF2E63" />
+              </svg>
+            </div>
+            <h3 class="feature-title">100+ Anime</h3>
+            <p class="feature-description">
+              Une collection soigneusement sélectionnée des anime les plus
+              populaires et leurs génériques emblématiques.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 63 63" fill="none">
+                <path
+                  d="M23 12H40C42.2091 12 44 13.7909 44 16V32C44 36.4183 40.4183 40 36 40H27C22.5817 40 19 36.4183 19 32V16C19 13.7909 20.7909 12 23 12Z"
+                  fill="#FFC144"
+                />
+                <path
+                  d="M31.5 4L32.5 6L35 5.5L34.5 8L37 9L34.5 10L35 12.5L32.5 12L31.5 14.5L30.5 12L28 12.5L28.5 10L26 9L28.5 8L28 5.5L30.5 6L31.5 4Z"
+                  fill="#FF2E63"
+                />
+              </svg>
+            </div>
+            <h3 class="feature-title">Édition Limitée</h3>
+            <p class="feature-description">
+              Première édition numérotée avec des cartes exclusives et un
+              packaging collector unique.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg viewBox="0 0 63 63" fill="none">
+                <circle cx="31.5" cy="31.5" r="26" fill="#8E54E9" />
+                <circle cx="31.5" cy="31.5" r="20" fill="#FF2E63" />
+                <path d="M20 25L20 38L31.5 31.5L20 25Z" fill="#FFC144" />
+                <path d="M43 25L43 38L31.5 31.5L43 25Z" fill="#FFC144" />
+                <circle cx="31.5" cy="20" r="3" fill="#00A6FB" />
+                <circle cx="31.5" cy="43" r="3" fill="#00A6FB" />
+                <circle cx="20" cy="31.5" r="3" fill="#00A6FB" />
+                <circle cx="43" cy="31.5" r="3" fill="#00A6FB" />
+              </svg>
+            </div>
+            <h3 class="feature-title">Gameplay Prenant & Addictif</h3>
+            <p class="feature-description">
+              Des parties rapides et intenses qui testent vos connaissances
+              anime. Plus vous jouez, plus vous progressez !
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Details -->
+    <section class="product-details">
+      <div class="container">
+        <div class="product-content">
+          <div class="product-info">
+            <h2 class="section-title">
+              <span class="title-gradient">Ce qui vous attend</span>
+            </h2>
+            <h3 class="section-subtitle">
+              <span class="title-gradient">Différents modes de jeux</span>
+            </h3>
+            <div class="game-modes-grid">
+              <div class="game-mode-card">
+                <div class="mode-icon shonen">
+                  <span>💥</span>
+                </div>
+                <h3 class="mode-title">Shonen</h3>
+                <p class="mode-description">
+                  Naruto, Dragon Ball, One Piece, Bleach, Attack on Titan...
+                </p>
+              </div>
+
+              <div class="game-mode-card">
+                <div class="mode-icon romance">
+                  <span>💕</span>
+                </div>
+                <h3 class="mode-title">Romance</h3>
+                <p class="mode-description">
+                  Your Name, Toradora, Clannad, Kimi ni Todoke...
+                </p>
+              </div>
+
+              <div class="game-mode-card">
+                <div class="mode-icon drama">
+                  <span>🎭</span>
+                </div>
+                <h3 class="mode-title">Drama</h3>
+                <p class="mode-description">
+                  Tokyo Ghoul, Death Note, Steins;Gate, Parasyte...
+                </p>
+              </div>
+
+              <div class="game-mode-card">
+                <div class="mode-icon others">
+                  <span>✨</span>
+                </div>
+                <h3 class="mode-title">Et bien d'autres</h3>
+                <p class="mode-description">
+                  Seinen, Sports, 90's, Comedy et plein d'autres genres...
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="product-visual">
+            <div class="product-showcase">
+              <div class="showcase-main">
+                <div
+                  class="card-preview"
+                  style="background-image: url(&quot;assets/Card0.png&quot;)"
+                ></div>
+              </div>
+              <div class="showcase-thumbnails">
+                <div
+                  class="thumbnail active"
+                  style="background-image: url(&quot;assets/Card0.png&quot;)"
+                ></div>
+                <div
+                  class="thumbnail"
+                  style="background-image: url(&quot;assets/Card1.png&quot;)"
+                ></div>
+                <div
+                  class="thumbnail"
+                  style="background-image: url(&quot;assets/Card2.png&quot;)"
+                ></div>
+                <div
+                  class="thumbnail"
+                  style="background-image: url(&quot;assets/Card3.png&quot;)"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preorder Section -->
+    <section id="preorder" class="preorder">
+      <div class="container">
+        <div class="preorder-content">
+          <h2 class="section-title">
+            <span class="title-gradient">Précommandez maintenant</span>
+          </h2>
+          <p class="preorder-subtitle">
+            Soyez parmi les premiers à recevoir le Karu Deck officiel
+          </p>
+
+          <div class="pricing-cards">
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h3 class="pricing-title">Deck Standard</h3>
+                <div class="pricing-price">
+                  <span class="price-amount">15</span>
+                  <span class="price-decimal">.99</span>
+                  <span class="price-currency">€</span>
+                </div>
+              </div>
+              <ul class="pricing-features">
+                <li>100+ cartes anime</li>
+                <li>Boîte standard</li>
+                <li>Guide de règles</li>
+                <li>Compatible avec l'app</li>
+              </ul>
+              <div class="payment-buttons">
+                <button class="btn btn-outline" onclick="addToCart('standard')">
+                  <span>Ajouter au panier</span>
+                </button>
+                <button
+                  class="btn btn-stripe"
+                  data-stripe-product="standard"
+                  onclick="stripeBuyNow('standard')"
+                >
+                  <span>Acheter maintenant</span>
+                  <div class="stripe-logo">Stripe</div>
+                </button>
+              </div>
+            </div>
+
+            <div class="pricing-card featured">
+              <div class="pricing-badge">Populaire</div>
+              <div class="pricing-header">
+                <h3 class="pricing-title">Deck Competition</h3>
+                <div class="pricing-price">
+                  <span class="price-amount">25</span>
+                  <span class="price-decimal">.00</span>
+                  <span class="price-currency">€</span>
+                </div>
+              </div>
+              <ul class="pricing-features">
+                <li>100+ cartes anime</li>
+                <li>Boîte collector magnétique</li>
+                <li>Accès à la prochaine compétition</li>
+                <li>Cartes exclusives limitées</li>
+                <li>Livraison gratuite</li>
+              </ul>
+              <div class="payment-buttons">
+                <button
+                  class="btn btn-outline"
+                  onclick="addToCart('competition')"
+                >
+                  <span>Ajouter au panier</span>
+                </button>
+                <button
+                  class="btn btn-stripe btn-primary"
+                  data-stripe-product="competition"
+                  onclick="stripeBuyNow('competition')"
+                >
+                  <span>Acheter maintenant</span>
+                  <div class="btn-glow"></div>
+                  <div class="stripe-logo">Stripe</div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="preorder-info">
+            <div class="info-item">
+              <strong>🚚 Livraison prévue :</strong> Septembre 2025
+            </div>
+            <div class="info-item">
+              <strong>💳 Paiement sécurisé :</strong> Stripe & Shopify
+            </div>
+            <div class="info-item">
+              <strong>🔒 Garantie :</strong> Remboursement 30 jours
+            </div>
+            <div class="info-item">
+              <strong>🏆 Compétition :</strong> Accès exclusif aux tournois
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+      <div class="container">
+        <h2 class="section-title">
+          <span class="title-gradient">Questions fréquentes</span>
+        </h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Quand vais-je recevoir ma commande ?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M6 9l6 6 6-6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Les précommandes seront expédiées en Septembre 2025. Vous
+                recevrez un email de confirmation avec le numéro de suivi dès
+                l'expédition.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Qu'est-ce que l'accès à la compétition ?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M6 9l6 6 6-6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Le Deck Competition vous donne accès à notre prochain tournoi
+                officiel KARU MELO avec des prix exclusifs.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span
+                >Comment les cartes sont-elles compatibles avec l'app ?</span
+              >
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M6 9l6 6 6-6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Chaque deck contient un QR code qui vous permet de synchroniser
+                votre deck physique avec l'application KARU MELO.
+              </p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Livrez-vous à l'international ?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none">
+                <path
+                  d="M6 9l6 6 6-6"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Actuellement, nous livrons en France métropolitaine, Belgique.
+                D'autres pays seront ajoutés prochainement.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <div class="footer-logo">
+              <img src="assets/logo.png" alt="Karu Logo" class="logo-img" />
+              <span class="logo-text">KARU MELO</span>
+            </div>
+            <p class="footer-description">
+              L'expérience ultime pour les fans d'anime. Découvrez, jouez et
+              partagez votre passion.
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-section">
+              <h4>Produit</h4>
+              <a href="#features">Caractéristiques</a>
+              <a href="#preorder">Précommander</a>
+              <a href="#">App Mobile</a>
+            </div>
+
+            <div class="footer-section">
+              <h4>Support</h4>
+              <a href="#faq">FAQ</a>
+              <a href="#">Contact</a>
+              <a href="#">Livraison</a>
+            </div>
+
+            <div class="footer-section">
+              <h4>Légal</h4>
+              <a href="#">CGV</a>
+              <a href="#">Confidentialité</a>
+              <a href="#">Mentions légales</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 KARU MELO. Tous droits réservés.</p>
+          <div class="social-links">
+            <a href="#" class="social-link">Twitter</a>
+            <a href="#" class="social-link">Instagram</a>
+            <a href="#" class="social-link">Discord</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cart Sidebar (for Shopify integration) -->
+    <div id="cart-sidebar" class="cart-sidebar">
+      <div class="cart-header">
+        <h3>Votre panier</h3>
+        <button class="cart-close" onclick="closeCart()">&times;</button>
+      </div>
+      <div class="cart-content">
+        <div id="cart-items"></div>
+        <div class="cart-total">
+          <div class="total-line">
+            <span>Total: </span>
+            <span id="cart-total">0€</span>
+          </div>
+        </div>
+        <button class="btn btn-primary cart-checkout">
+          <span>Procéder au paiement</span>
+          <div class="btn-glow"></div>
+        </button>
+      </div>
+    </div>
+
+    <div id="cart-overlay" class="cart-overlay" onclick="closeCart()"></div>
+
+    <!-- Newsletter Modal -->
+    <div id="newsletter-modal" class="newsletter-modal">
+      <div class="newsletter-content">
+        <div class="newsletter-header">
+          <h3>🔔 Être averti de la sortie</h3>
+          <button class="newsletter-close" onclick="closeNewsletter()">
+            &times;
+          </button>
+        </div>
+        <div class="newsletter-body">
+          <p>Soyez le premier informé quand le Karu Deck sera disponible !</p>
+
+          <form id="newsletter-form" onsubmit="submitNewsletter(event)">
+            <div class="form-group">
+              <label for="newsletter-email">Adresse e-mail</label>
+              <input
+                type="email"
+                id="newsletter-email"
+                name="email"
+                placeholder="votre@email.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="newsletter-name">Prénom (optionnel)</label>
+              <input
+                type="text"
+                id="newsletter-name"
+                name="name"
+                placeholder="Votre prénom"
+              />
+            </div>
+
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input
+                  type="checkbox"
+                  id="newsletter-updates"
+                  name="updates"
+                  checked
+                />
+                <span class="checkmark"></span>
+                Recevoir également les actualités du projet
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary newsletter-submit">
+              <span>S'inscrire aux notifications</span>
+              <div class="btn-glow"></div>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="newsletter-overlay"
+      class="newsletter-overlay"
+      onclick="closeNewsletter()"
+    ></div>
+
+    <!-- JavaScript -->
+    <script src="stripe-config.js"></script>
+    <script src="script.js"></script>
+    <script src="stripe-payments.js"></script>
+  </body>
+</html>

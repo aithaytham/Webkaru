@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement Annulé - Karu Deck | KARU MELO</title>
+    <meta name="description" content="Votre paiement a été annulé">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <style>
+        .cancel-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .cancel-container {
+            max-width: 600px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .cancel-icon {
+            font-size: 4rem;
+            color: #FFC144;
+            margin-bottom: 1.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .cancel-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFC144 0%, #FF2E63 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .cancel-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #B8C6DB;
+            line-height: 1.6;
+        }
+        
+        .reassurance {
+            background: rgba(255, 193, 68, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .reassurance h3 {
+            color: #FFC144;
+            margin-bottom: 1rem;
+        }
+        
+        .reassurance ul {
+            color: #B8C6DB;
+            padding-left: 1.5rem;
+        }
+        
+        .reassurance li {
+            margin: 0.5rem 0;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00A6FB 0%, #FF2E63 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 166, 251, 0.4);
+        }
+        
+        .retry-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFC144 0%, #FF2E63 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .retry-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 193, 68, 0.4);
+        }
+        
+        .support-info {
+            background: rgba(255, 44, 99, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .support-info h3 {
+            color: #FF2E63;
+            margin-bottom: 1rem;
+        }
+        
+        .support-info p {
+            color: #B8C6DB;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="cancel-page">
+        <div class="cancel-container">
+            <div class="cancel-icon">⏸️</div>
+            
+            <h1 class="cancel-title">Paiement Annulé</h1>
+            
+            <p class="cancel-message">
+                Votre paiement a été annulé. Aucun montant n'a été débité de votre compte.<br>
+                Vous pouvez réessayer à tout moment !
+            </p>
+            
+            <div class="reassurance">
+                <h3>🔒 Pas de souci !</h3>
+                <ul>
+                    <li>💳 Aucun débit n'a été effectué</li>
+                    <li>🛡️ Vos données sont sécurisées</li>
+                    <li>🔄 Vous pouvez réessayer quand vous voulez</li>
+                    <li>📧 Aucun email de confirmation ne sera envoyé</li>
+                </ul>
+            </div>
+            
+            <div class="support-info">
+                <h3>❓ Besoin d'aide ?</h3>
+                <p>Si vous rencontrez des difficultés avec le paiement, n'hésitez pas à :</p>
+                <ul>
+                    <li>📧 Nous contacter : support@karu-melo.com</li>
+                    <li>💬 Utiliser le chat en ligne</li>
+                    <li>📱 Nous suivre sur les réseaux sociaux</li>
+                    <li>❓ Consulter notre FAQ</li>
+                </ul>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="index.html#preorder" class="retry-button">
+                    🔄 Réessayer le paiement
+                </a>
+                <a href="index.html" class="back-button">
+                    🏠 Retour à l'accueil
+                </a>
+            </div>
+            
+            <div style="margin-top: 2rem; color: #B8C6DB; font-size: 0.9rem;">
+                <p>🌟 Votre Karu Deck vous attend toujours !</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Track cancellation event
+        if (typeof gtag === 'function') {
+            gtag('event', 'checkout_cancel', {
+                event_category: 'E-commerce',
+                event_label: 'Karu Deck Preorder',
+                value: 0
+            });
+        }
+        
+        // Optional: Show additional messaging based on URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const reason = urlParams.get('reason');
+        
+        if (reason) {
+            console.log('Cancellation reason:', reason);
+            // You could show specific messaging based on the reason
+        }
+    </script>
+</body>
+</html>

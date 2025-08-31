@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paiement Réussi - Karu Deck | KARU MELO</title>
+    <meta name="description" content="Votre précommande Karu Deck a été confirmée avec succès">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Stripe Configuration -->
+    <script src="stripe-config.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    
+    <style>
+        .success-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .success-container {
+            max-width: 600px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #00A6FB;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .success-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #00A6FB 0%, #FF2E63 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .success-message {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #B8C6DB;
+            line-height: 1.6;
+        }
+        
+        .order-details {
+            background: rgba(0, 166, 251, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .order-details h3 {
+            color: #00A6FB;
+            margin-bottom: 1rem;
+        }
+        
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .order-item:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            color: #00A6FB;
+        }
+        
+        .next-steps {
+            background: rgba(255, 44, 99, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .next-steps h3 {
+            color: #FF2E63;
+            margin-bottom: 1rem;
+        }
+        
+        .next-steps ul {
+            color: #B8C6DB;
+            padding-left: 1.5rem;
+        }
+        
+        .next-steps li {
+            margin: 0.5rem 0;
+        }
+        
+        .back-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #00A6FB 0%, #FF2E63 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 166, 251, 0.4);
+        }
+        
+        .loading-order {
+            color: #FFC144;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="success-page">
+        <div class="success-container">
+            <div class="success-icon">🎉</div>
+            
+            <h1 class="success-title">Paiement Réussi !</h1>
+            
+            <p class="success-message">
+                Félicitations ! Votre précommande Karu Deck a été confirmée avec succès.<br>
+                Vous allez recevoir un email de confirmation dans quelques minutes.
+            </p>
+            
+            <div id="order-details" class="order-details" style="display: none;">
+                <h3>🧾 Détails de votre commande</h3>
+                <div id="order-items"></div>
+            </div>
+            
+            <div id="loading-order" class="loading-order">
+                <p>📦 Récupération des détails de votre commande...</p>
+            </div>
+            
+            <div class="next-steps">
+                <h3>📋 Prochaines étapes</h3>
+                <ul>
+                    <li>📧 Vous recevrez un email de confirmation</li>
+                    <li>📱 Nous vous tiendrons au courant du développement</li>
+                    <li>🚚 Livraison prévue : Septembre 2025</li>
+                    <li>🎮 Accès anticipé à l'app KARU MELO</li>
+                    <li>🏆 Invitation aux tournois exclusifs</li>
+                </ul>
+            </div>
+            
+            <a href="index.html" class="back-button">
+                Retour à l'accueil
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="stripe-payments.js"></script>
+    <script>
+        // Get session ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const sessionId = urlParams.get('session_id');
+        
+        if (sessionId && window.karuStripePayments) {
+            // Handle payment success
+            window.karuStripePayments.handlePaymentSuccess(sessionId)
+                .then(session => {
+                    if (session) {
+                        displayOrderDetails(session);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error processing success:', error);
+                    document.getElementById('loading-order').innerHTML = 
+                        '<p style="color: #FF2E63;">⚠️ Erreur lors de la récupération des détails</p>';
+                });
+        } else {
+            document.getElementById('loading-order').style.display = 'none';
+        }
+        
+        function displayOrderDetails(session) {
+            const orderDetails = document.getElementById('order-details');
+            const orderItems = document.getElementById('order-items');
+            const loadingOrder = document.getElementById('loading-order');
+            
+            // Hide loading
+            loadingOrder.style.display = 'none';
+            
+            // Show order details
+            orderDetails.style.display = 'block';
+            
+            // Build order items HTML
+            let itemsHTML = '';
+            
+            // Add session information
+            itemsHTML += `
+                <div class="order-item">
+                    <span>Numéro de commande:</span>
+                    <span>${session.id.substring(0, 20)}...</span>
+                </div>
+                <div class="order-item">
+                    <span>Email:</span>
+                    <span>${session.customer_details?.email || 'N/A'}</span>
+                </div>
+                <div class="order-item">
+                    <span>Montant total:</span>
+                    <span>${(session.amount_total / 100).toFixed(2)}€</span>
+                </div>
+            `;
+            
+            orderItems.innerHTML = itemsHTML;
+        }
+        
+        // Track successful conversion
+        if (typeof gtag === 'function' && sessionId) {
+            gtag('event', 'purchase', {
+                transaction_id: sessionId,
+                value: 0, // Will be updated when session is loaded
+                currency: 'EUR',
+                event_category: 'E-commerce',
+                event_label: 'Karu Deck Preorder'
+            });
+        }
+    </script>
+</body>
+</html>

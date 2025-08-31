@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Debug Cart - Karu Stripe</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background: #1a1a2e;
+        color: white;
+      }
+      .debug-section {
+        background: #252a34;
+        padding: 20px;
+        margin: 10px 0;
+        border-radius: 10px;
+      }
+      .btn {
+        background: #00a6fb;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+      }
+      pre {
+        background: #1a1a2e;
+        padding: 10px;
+        border-radius: 5px;
+        overflow: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🐛 Debug Cart - Stripe Price IDs</h1>
+
+    <div class="debug-section">
+      <h3>1. Configuration Check</h3>
+      <button class="btn" onclick="debugConfig()">Check Config</button>
+      <pre id="config-output"></pre>
+    </div>
+
+    <div class="debug-section">
+      <h3>2. Add Products & Check Cart</h3>
+      <button class="btn" onclick="addStandard()">Add Standard</button>
+      <button class="btn" onclick="addCompetition()">Add Competition</button>
+      <button class="btn" onclick="debugCart()">Debug Cart</button>
+      <pre id="cart-output"></pre>
+    </div>
+
+    <div class="debug-section">
+      <h3>3. Test Checkout Flow</h3>
+      <button class="btn" onclick="testCheckout()">Test Checkout</button>
+      <pre id="checkout-output"></pre>
+    </div>
+
+    <!-- Include scripts -->
+    <script src="stripe-config.js"></script>
+    <script src="script.js"></script>
+    <script src="stripe-payments.js"></script>
+
+    <script>
+      function debugConfig() {
+        const output = document.getElementById("config-output");
+        let debug = "";
+
+        debug += "=== STRIPE CONFIG ===\n";
+        debug += `publishableKey: ${STRIPE_CONFIG?.publishableKey || "MISSING"}\n`;
+        debug += `products: ${JSON.stringify(STRIPE_CONFIG?.products, null, 2)}\n\n`;
+
+        debug += "=== PRODUCTS OBJECT ===\n";
+        debug += `${JSON.stringify(products, null, 2)}\n\n`;
+
+        debug += "=== STRIPE INITIALIZED ===\n";
+        debug += `karuStripePayments: ${!!window.karuStripePayments}\n`;
+        debug += `isInitialized: ${window.karuStripePayments?.isInitialized || false}\n`;
+
+        output.textContent = debug;
+      }
+
+      function addStandard() {
+        addToCart("standard");
+        setTimeout(debugCart, 100);
+      }
+
+      function addCompetition() {
+        addToCart("competition");
+        setTimeout(debugCart, 100);
+      }
+
+      function debugCart() {
+        const output = document.getElementById("cart-output");
+        let debug = "";
+
+        debug += "=== CART CONTENTS ===\n";
+        debug += `Cart length: ${cart.length}\n`;
+        debug += `Cart items:\n${JSON.stringify(cart, null, 2)}\n\n`;
+
+        debug += "=== CART ITEMS ANALYSIS ===\n";
+        cart.forEach((item, index) => {
+          debug += `Item ${index + 1}:\n`;
+          debug += `  type: ${item.type}\n`;
+          debug += `  stripePriceId: ${item.stripePriceId || "MISSING!"}\n`;
+          debug += `  product lookup: ${JSON.stringify(products[item.type], null, 2)}\n\n`;
+        });
+
+        output.textContent = debug;
+      }
+
+             async function testCheckout() {
+         const output = document.getElementById("checkout-output");
+         output.textContent = "Testing checkout flow...\n";
+
+         try {
+           // Test the line items creation logic from proceedToCheckout
+           const lineItems = cart.map((item) => {
+             console.log("Processing item:", item);
+
+             // If item has stripePriceId directly, use it
+             if (item.stripePriceId) {
+               return {
+                 price: item.stripePriceId,
+                 quantity: item.quantity,
+               };
+             }
+
+             // Fallback to products lookup
+             const product = products[item.type];
+             if (!product || !product.stripePriceId) {
+               throw new Error(`Product ${item.type} not configured`);
+             }
+
+             return {
+               price: product.stripePriceId,
+               quantity: item.quantity,
+             };
+           });
+
+           output.textContent += "✅ Line items created successfully:\n";
+           output.textContent += JSON.stringify(lineItems, null, 2) + "\n\n";
+
+           // Test server connectivity first
+           output.textContent += "🔄 Testing server connectivity...\n";
+           try {
+             const healthResponse = await fetch("http://localhost:3000/health");
+             if (healthResponse.ok) {
+               const healthData = await healthResponse.json();
+               output.textContent += `✅ Server accessible: ${healthData.status}\n\n`;
+             } else {
+               output.textContent += `❌ Server health check failed: ${healthResponse.status}\n\n`;
+             }
+           } catch (healthError) {
+             output.textContent += `❌ Server not accessible: ${healthError.message}\n\n`;
+           }
+
+           // Test API call
+           output.textContent += "🔄 Testing API call...\n";
+           const apiUrl = "http://localhost:3000/api/create-checkout-session";
+           output.textContent += `URL: ${apiUrl}\n`;
+           
+           const requestBody = {
+             line_items: lineItems,
+             mode: "payment",
+           };
+           
+           output.textContent += `Request body: ${JSON.stringify(requestBody, null, 2)}\n\n`;
+
+           const response = await fetch(apiUrl, {
+             method: "POST",
+             headers: { 
+               "Content-Type": "application/json",
+               "Origin": window.location.origin
+             },
+             body: JSON.stringify(requestBody),
+           });
+
+           output.textContent += `Response status: ${response.status} ${response.statusText}\n`;
+
+           if (response.ok) {
+             const result = await response.json();
+             output.textContent += "✅ API call successful:\n";
+             output.textContent += JSON.stringify(result, null, 2);
+           } else {
+             const errorText = await response.text();
+             output.textContent += "❌ API call failed:\n";
+             output.textContent += `Status: ${response.status}\n`;
+             output.textContent += `Response: ${errorText}`;
+           }
+         } catch (error) {
+           output.textContent += "❌ Error: " + error.message + "\n";
+           output.textContent += `Error type: ${error.name}\n`;
+           output.textContent += `Stack: ${error.stack}\n`;
+           console.error("Checkout test error:", error);
+         }
+       }
+
+      // Auto-run config check on load
+      setTimeout(debugConfig, 1000);
+    </script>
+  </body>
+</html>
