@@ -5,6 +5,7 @@ Write-Host "🔧 Setting up development environment variables..." -ForegroundCol
 
 # Stripe Configuration (TEST KEYS)
 $env:STRIPE_SECRET_KEY = "sk_test_[YOUR_SECRET_KEY_HERE]"
+
 $env:STRIPE_PUBLISHABLE_KEY = "pk_test_[YOUR_PUBLISHABLE_KEY_HERE]"
 $env:STRIPE_WEBHOOK_SECRET = "YTYT"
 

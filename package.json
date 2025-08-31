@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node server-production.js",
     "dev": "nodemon server-production.js",
+    "build": "echo 'No build needed for static files'",
+    "build:azure": "echo 'No build needed for static files'",
     "test": "jest",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
