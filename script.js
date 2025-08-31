@@ -511,7 +511,7 @@ async function proceedToCheckout() {
     // Redirect to Stripe Checkout
     const stripe = Stripe(window.STRIPE_CONFIG.publishableKey);
     const result = await stripe.redirectToCheckout({
-      sessionId: session.id,
+      sessionId: session.sessionId,
     });
 
     if (result.error) {

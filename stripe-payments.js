@@ -138,7 +138,7 @@ class KaruStripePayments {
 
       // Redirect to Stripe Checkout
       const result = await this.stripe.redirectToCheckout({
-        sessionId: session.id,
+        sessionId: session.sessionId,
       });
 
       if (result.error) {

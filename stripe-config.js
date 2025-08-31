@@ -4,14 +4,15 @@ const STRIPE_CONFIG = {
   // Your Stripe publishable key (starts with pk_)
   // ⚠️ IMPORTANT: Set your publishable key via environment variable in production
   // For development, you can use a test key here temporarily
-  publishableKey: "pk_test_YOUR_PUBLISHABLE_KEY_HERE", // Replace with your publishable key
+  publishableKey:
+    "pk_live_51RoUU7AZn1zIIHOSXsB6sVqPUvlq1go0CXfvzlA7wBbs2oVfVLsw78wOTxoxoZMrB6y5YY0KpTuqMccYySK8aMTs001gONT7oL",
   // For testing, use your test publishable key from Stripe Dashboard
 
   // Backend API configuration
   apiBaseUrl:
     window.location.hostname === "localhost"
-      ? "http://localhost:3000"
-      : window.location.origin, // Use same origin in production
+      ? "http://localhost:7071/api" // Azure Functions local development
+      : window.location.origin + "/api", // Azure Static Web App API in production
 
   // Shipping configuration
   shippingRateId: "shr_1S1wPkAZn1zIIHOSu8Ly5BAx", // Livraison fees

@@ -26,9 +26,13 @@ module.exports = async function (context, req) {
     } = req.body;
 
     const allowedPriceIds = [
-      "price_1S1otEAZn1zIIHOSzPTUXzCW", // Standard
+      "price_1S1wLUAZn1zIIHOSDPcy58fB", // Standard (updated)
       "price_1S1zLAAZn1zIIHOSWMOpUPpZ", // Competition
     ];
+
+    // Shipping configuration
+    const shippingRateId =
+      process.env.STRIPE_SHIPPING_RATE_ID || "shr_1S1wPkAZn1zIIHOSu8Ly5BAx";
 
     // Validation
     if (!line_items?.length) {
@@ -54,6 +58,11 @@ module.exports = async function (context, req) {
         `${process.env.FRONTEND_URL}/success.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: cancel_url || `${process.env.FRONTEND_URL}/cancel.html`,
       metadata: metadata || {},
+      shipping_options: [
+        {
+          shipping_rate: shippingRateId,
+        },
+      ],
       invoice_creation: {
         enabled: true,
         invoice_data: {
