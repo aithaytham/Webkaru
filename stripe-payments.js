@@ -165,7 +165,7 @@ class KaruStripePayments {
     };
 
     // Call your backend to create the session
-    const apiUrl = `${this.config.apiBaseUrl}/api/create-checkout-session`;
+    const apiUrl = `${this.config.apiBaseUrl}/create-checkout-session`;
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
