@@ -482,7 +482,7 @@ async function proceedToCheckout() {
     console.log("📤 Sending to server:", JSON.stringify(sessionData, null, 2));
 
     // Call backend to create checkout session
-    const apiUrl = `${window.STRIPE_CONFIG.apiBaseUrl}/api/create-checkout-session`;
+    const apiUrl = `${window.STRIPE_CONFIG.apiBaseUrl}/create-checkout-session`;
     const response = await fetch(apiUrl, {
       method: "POST",
       headers: {
