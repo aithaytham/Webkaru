@@ -636,6 +636,16 @@
         r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
         a.appendChild(r);
       })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+
+      // Test Hotjar installation
+      setTimeout(function () {
+        if (window.hj) {
+          console.log("✅ Hotjar loaded successfully");
+          window.hj("event", "page_viewed");
+        } else {
+          console.log("❌ Hotjar not loaded");
+        }
+      }, 2000);
     </script>
   </body>
 </html>
